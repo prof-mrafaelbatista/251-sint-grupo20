@@ -1,0 +1,45 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+    <h3>Dicionário de Palavras e Termos</h3><br>
+
+    <table class="dicionario table"> <!-- Added Bootstrap table class -->
+        <thead> <!-- Added thead for semantics -->
+            <tr>
+                <th style="width : 5%">Código</th>
+                <th style="width : 15%">Termo</th>
+                <th style="width : 75%">Descrição</th>
+                <th style="width : 5%">Ação</th> <!-- Centered header -->
+            </tr>
+        </thead>
+        <tbody>
+        {% for linha in dicionario_termos %}
+            <tr>
+                <td style="text-align : right; padding : 7px; vertical-align: middle;">{{ linha[0] }}</td>
+
+                <!-- Form for updating term and description -->
+                <form action="{{ url_for('alterar_termo', termo_id=linha[0]) }}" method="post" id="form-alterar-{{ linha[0] }}">
+                    <td style="vertical-align: middle;"> <!-- Apply vertical align -->
+                        <input class="form-control" id="termo-{{ linha[0] }}" name="termo" value="{{ linha[1] }}" aria-describedby="termoHelp">
+                    </td>
+                    <td style="vertical-align: middle;"> <!-- Apply vertical align -->
+                        <input class="form-control" id="descricao-{{ linha[0] }}" name="descricao" value="{{ linha[2] }}" aria-describedby="descricaoHelp">
+                    </td>
+                </form> <!-- End of update form -->
+
+                <!-- Actions cell -->
+                <td style="white-space: nowrap; vertical-align: middle;"> <!-- Centered content, no wrap, vertical align -->
+                    <!-- Alterar Button -->
+                    <button type="submit" form="form-alterar-{{ linha[0] }}" class="btn btn-sm btn-warning me-1">Alterar</button> <!-- Use form attribute, Bootstrap button classes, margin -->
+
+                    <!-- Excluir Button (in its own form) -->
+                    <form method="post" action="{{ url_for('excluir_termo', termo_id=linha[0]) }}" style="display: inline;"> <!-- Inline display for form -->
+                        <button type="submit" class="btn btn-sm btn-danger">Excluir</button> <!-- Bootstrap button classes -->
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

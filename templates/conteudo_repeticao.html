@@ -1,0 +1,249 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+        <h1>Estruturas de Repetição em Python 🔁</h1>
+
+        </br>
+
+        <p>
+            As estruturas de repetição, também conhecidas como laços ou loops, permitem que você execute um bloco de
+            código repetidamente enquanto uma condição for atendida ou para cada item de uma sequência. As principais
+            são o for e o while.
+        </p>
+
+        <hr>
+
+        <h2>1. <code>for</code> (Para)</h2>
+        <p>O laço <code>for</code> em Python é usado para iterar sobre uma sequência (como uma lista, uma tupla, um dicionário, um conjunto ou uma string) ou outros objetos iteráveis. Ele executa o bloco de código uma vez para cada item na sequência.</p>
+
+        <h3>Iterando sobre uma sequência (lista):</h3>
+        <pre><code>
+frutas = ["maçã", "banana", "cereja"]
+
+for fruta in frutas:
+    print(fruta)
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+maçã
+banana
+cereja
+        </code></pre>
+
+        <h3>Iterando sobre uma string:</h3>
+        <pre><code>
+for letra in "Python":
+    print(letra)
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+P
+y
+t
+h
+o
+n
+        </code></pre>
+
+        <h3>Usando a função <code>range()</code>:</h3>
+        <p>A função <code>range()</code> é frequentemente usada com <code>for</code> para executar um bloco de código um número específico de vezes.</p>
+        <p><code>range(fim)</code>: Gera números de 0 até <code>fim-1</code>.</p>
+        <pre><code>
+for i in range(5):  # De 0 a 4
+    print(i)
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+0
+1
+2
+3
+4
+        </code></pre>
+
+        <p><code>range(inicio, fim)</code>: Gera números de <code>inicio</code> até <code>fim-1</code>.</p>
+        <pre><code>
+for i in range(2, 6):  # De 2 a 5
+    print(i)
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+2
+3
+4
+5
+        </code></pre>
+
+        <p><code>range(inicio, fim, passo)</code>: Gera números de <code>inicio</code> até <code>fim-1</code>, incrementando/decrementando pelo <code>passo</code>.</p>
+        <pre><code>
+for i in range(1, 10, 2):  # De 1 a 9, pulando de 2 em 2
+    print(i)
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+1
+3
+5
+7
+9
+        </code></pre>
+
+        <hr>
+
+        <h2>2. <code>while</code> (Enquanto)</h2>
+        <p>O laço <code>while</code> executa um bloco de código repetidamente enquanto uma condição especificada for verdadeira.</p>
+        <p><strong>Sintaxe:</strong></p>
+        <pre><code>
+while condicao:
+    # Bloco de código a ser executado enquanto a condição for verdadeira
+        </code></pre>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code>
+contador = 0
+while contador < 5:
+    print(f"Contador é: {contador}")
+    contador += 1  # Importante: atualizar a variável da condição para evitar loop infinito
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+Contador é: 0
+Contador é: 1
+Contador é: 2
+Contador é: 3
+Contador é: 4
+        </code></pre>
+        <div class="note">
+            <p><strong>Cuidado:</strong> Se a condição de um laço <code>while</code> nunca se tornar falsa, você criará um loop infinito, o que fará com que seu programa trave ou consuma todos os recursos do sistema. Sempre garanta que a condição possa eventualmente se tornar falsa.</p>
+        </div>
+
+        <hr>
+
+        <h2>3. Instruções de Controle de Laço</h2>
+        <p>Existem instruções que podem alterar o fluxo normal de um laço:</p>
+
+        <h3><code>break</code> (Interromper)</h3>
+        <p>A instrução <code>break</code> termina o laço atual prematuramente, e o controle do programa passa para a próxima instrução após o laço.</p>
+        <p><strong>Exemplo com <code>for</code>:</strong></p>
+        <pre><code>
+numeros = [1, 2, 3, 4, 5, 6]
+for num in numeros:
+    if num == 4:
+        break  # Sai do laço quando num é 4
+    print(num)
+print("Fim do laço")
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+1
+2
+3
+Fim do laço
+        </code></pre>
+
+        <p><strong>Exemplo com <code>while</code>:</strong></p>
+        <pre><code>
+i = 0
+while i < 10:
+    print(i)
+    if i == 3:
+        break
+    i += 1
+print("Fim do laço")
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+0
+1
+2
+3
+Fim do laço
+        </code></pre>
+
+        <h3><code>continue</code> (Continuar)</h3>
+        <p>A instrução <code>continue</code> pula o restante do código dentro do laço para a iteração atual e passa para a próxima iteração do laço.</p>
+        <p><strong>Exemplo com <code>for</code>:</strong></p>
+        <pre><code>
+numeros = [1, 2, 3, 4, 5]
+for num in numeros:
+    if num == 3:
+        continue  # Pula a impressão do número 3
+    print(num)
+print("Fim do laço")
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+1
+2
+4
+5
+Fim do laço
+        </code></pre>
+
+        <h3>Cláusula <code>else</code> em Laços</h3>
+        <p>Tanto o laço <code>for</code> quanto o <code>while</code> em Python podem ter uma cláusula <code>else</code> opcional. O bloco <code>else</code> é executado quando o laço termina normalmente (ou seja, não por uma instrução <code>break</code>).</p>
+        <p><strong>Exemplo com <code>for</code>:</strong></p>
+        <pre><code>
+for i in range(3):
+    print(f"Iteração {i}")
+else:
+    print("O laço 'for' terminou normalmente.")
+
+print("\n--- Com break ---")
+for i in range(3):
+    print(f"Iteração {i}")
+    if i == 1:
+        break
+else:
+    print("Este 'else' não será executado.") # Não é executado devido ao break
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+Iteração 0
+Iteração 1
+Iteração 2
+O laço 'for' terminou normalmente.
+
+--- Com break ---
+Iteração 0
+Iteração 1
+        </code></pre>
+
+        <p><strong>Exemplo com <code>while</code>:</strong></p>
+        <pre><code>
+count = 0
+while count < 3:
+    print(f"Contagem: {count}")
+    count += 1
+else:
+    print("O laço 'while' terminou normalmente.")
+
+print("\n--- Com break ---")
+count = 0
+while count < 3:
+    print(f"Contagem: {count}")
+    if count == 1:
+        break
+    count += 1
+else:
+    print("Este 'else' não será executado.") # Não é executado devido ao break
+        </code></pre>
+        <p><strong>Saída:</strong></p>
+        <pre><code>
+Contagem: 0
+Contagem: 1
+Contagem: 2
+O laço 'while' terminou normalmente.
+
+--- Com break ---
+Contagem: 0
+Contagem: 1
+        </code></pre>
+
+
+        <hr>
+
+        <p>Espero que esta explicação detalhada sobre as estruturas de repetição em Python seja útil! 😊</p>
+    </div>
+
+{% endblock %}

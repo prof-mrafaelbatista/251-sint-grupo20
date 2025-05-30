@@ -1,0 +1,206 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+        <h1>Funções e "Procedimentos" em Python ⚙️</h1>
+
+        </br>
+
+        <p>Funções são blocos de código nomeados que realizam uma tarefa específica. Elas são um dos pilares da programação estruturada e ajudam a tornar o código mais organizado, reutilizável e fácil de manter. Em Python, o termo "procedimento" é geralmente englobado pelo conceito de função (uma função que não retorna um valor explicitamente ou retorna <code>None</code>).</p>
+
+        <hr>
+
+        <h2>1. Definindo e Chamando Funções</h2>
+        <p>Usa-se a palavra-chave <code>def</code> para definir uma função, seguida pelo nome da função, parênteses <code>()</code> e dois pontos <code>:</code>. O corpo da função é indentado.</p>
+
+        <h3>Função que Realiza uma Ação (similar a um "Procedimento"):</h3>
+        <p>Este tipo de função executa uma série de instruções, mas não retorna um valor explicitamente para ser usado em atribuições.</p>
+        <pre><code>
+# Definindo uma função que saúda o usuário
+def saudar(nome):
+    print(f"Olá, {nome}! Bem-vindo(a).")
+
+# Chamando a função
+saudar("Alice")
+saudar("Roberto")
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Olá, Alice! Bem-vindo(a).
+Olá, Roberto! Bem-vindo(a).
+        </code></pre>
+        <p>Se você tentar atribuir o resultado de <code>saudar("Alice")</code> a uma variável e imprimi-la, verá <code>None</code>:</p>
+        <pre><code>
+resultado_saudacao = saudar("Carlos") # A função saudar imprime, mas não retorna valor
+print(f"Resultado da saudação: {resultado_saudacao}")
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Olá, Carlos! Bem-vindo(a).
+Resultado da saudação: None
+        </code></pre>
+
+
+        <h3>Função que Retorna um Valor:</h3>
+        <p>Estas funções realizam cálculos ou processamentos e usam a instrução <code>return</code> para enviar um valor de volta para quem a chamou.</p>
+        <pre><code>
+# Definindo uma função que soma dois números
+def somar(a, b):
+    resultado = a + b
+    return resultado
+
+# Chamando a função e armazenando o resultado
+soma = somar(10, 5)
+print(f"A soma de 10 e 5 é: {soma}")
+
+outra_soma = somar(100, -20)
+print(f"A soma de 100 e -20 é: {outra_soma}")
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+A soma de 10 e 5 é: 15
+A soma de 100 e -20 é: 80
+        </code></pre>
+
+        <hr>
+
+        <h2>2. Parâmetros e Argumentos</h2>
+        <p><strong>Parâmetros</strong> são as variáveis listadas dentro dos parênteses na definição da função. <strong>Argumentos</strong> são os valores reais passados para a função quando ela é chamada.</p>
+
+        <h3>Parâmetros Posicionais:</h3>
+        <p>Os argumentos são passados na ordem em que os parâmetros são definidos.</p>
+        <pre><code>
+def descrever_pet(tipo_animal, nome_animal):
+    print(f"Eu tenho um {tipo_animal}.")
+    print(f"Meu {tipo_animal} se chama {nome_animal}.")
+
+descrever_pet("cachorro", "Rex")
+# descrever_pet("Rex", "cachorro") # Ordem errada levaria a uma descrição incorreta
+        </code></pre>
+
+        <h3>Argumentos Nomeados (Keyword Arguments):</h3>
+        <p>Você pode especificar a qual parâmetro cada argumento corresponde, independentemente da ordem.</p>
+        <pre><code>
+def descrever_pet(tipo_animal, nome_animal):
+    print(f"Eu tenho um {tipo_animal}.")
+    print(f"Meu {tipo_animal} se chama {nome_animal}.")
+
+descrever_pet(nome_animal="Lily", tipo_animal="gato")
+        </code></pre>
+
+        <h3>Valores Padrão para Parâmetros:</h3>
+        <p>Você pode definir um valor padrão para um parâmetro. Se um argumento para esse parâmetro não for fornecido na chamada da função, o valor padrão será usado.</p>
+        <pre><code>
+def potencia(base, expoente=2): # expoente tem valor padrão 2
+    return base ** expoente
+
+print(f"5 ao quadrado: {potencia(5)}")       # Usa expoente padrão 2 -> Saída: 25
+print(f"3 ao cubo: {potencia(3, 3)}")        # Fornece o expoente 3 -> Saída: 27
+print(f"2 elevado a 4: {potencia(base=2, expoente=4)}") # Saída: 16
+        </code></pre>
+
+        <hr>
+
+        <h2>3. A Instrução <code>return</code></h2>
+        <p>A instrução <code>return</code> finaliza a execução da função e, opcionalmente, retorna um valor. Uma função pode ter múltiplas instruções <code>return</code> (por exemplo, dentro de condicionais), mas apenas uma será executada.</p>
+
+        <h3>Retornando Múltiplos Valores:</h3>
+        <p>Python permite retornar múltiplos valores de uma função. Na verdade, a função retorna uma tupla contendo esses valores, que pode ser desempacotada.</p>
+        <pre><code>
+def calcular_operacoes(x, y):
+    soma = x + y
+    diferenca = x - y
+    produto = x * y
+    return soma, diferenca, produto # Retorna uma tupla (soma, diferenca, produto)
+
+res_soma, res_dif, res_prod = calcular_operacoes(10, 4)
+print(f"Soma: {res_soma}")         # Saída: Soma: 14
+print(f"Diferença: {res_dif}")   # Saída: Diferença: 6
+print(f"Produto: {res_prod}")     # Saída: Produto: 40
+
+# Ou receber a tupla inteira
+resultados = calcular_operacoes(7, 2)
+print(f"Resultados como tupla: {resultados}") # Saída: Resultados como tupla: (9, 5, 14)
+        </code></pre>
+
+        <hr>
+
+        <h2>4. Escopo de Variáveis</h2>
+        <p>O escopo de uma variável é a parte do programa onde ela é reconhecida.</p>
+        <ul>
+            <li><strong>Variáveis Locais:</strong> Definidas dentro de uma função. Só podem ser acessadas de dentro dessa função.</li>
+            <li><strong>Variáveis Globais:</strong> Definidas fora de todas as funções. Podem ser acessadas (lidas) de qualquer lugar do script, inclusive de dentro das funções.</li>
+        </ul>
+        <pre><code>
+variavel_global = "Sou global"
+
+def minha_funcao():
+    variavel_local = "Sou local"
+    print(f"Dentro da função, posso ver a local: '{variavel_local}'")
+    print(f"Dentro da função, posso ver a global: '{variavel_global}'")
+
+minha_funcao()
+print(f"Fora da função, posso ver a global: '{variavel_global}'")
+# print(f"Fora da função, NÃO posso ver a local: {variavel_local}") # Isso geraria um NameError
+        </code></pre>
+        <p>Para modificar uma variável global dentro de uma função, você precisa usar a palavra-chave <code>global</code>. No entanto, seu uso excessivo é desencorajado, pois pode dificultar o rastreamento de modificações de variáveis.</p>
+        <pre><code>
+contador = 0
+
+def incrementar_contador():
+    global contador # Avisa que queremos modificar a variável global 'contador'
+    contador += 1
+    print(f"Contador dentro da função: {contador}")
+
+incrementar_contador()
+incrementar_contador()
+print(f"Contador fora da função: {contador}") # Saída: 2
+        </code></pre>
+
+        <hr>
+
+        <h2>5. Docstrings (Strings de Documentação)</h2>
+        <p>É uma boa prática incluir uma string de documentação (docstring) como a primeira instrução em uma função. Ela descreve o que a função faz. Docstrings são colocadas entre aspas triplas (<code>"""Docstring aqui"""</code> ou <code>'''Docstring aqui'''</code>).</p>
+        <pre><code>
+def calcular_media(lista_numeros):
+    """
+    Calcula e retorna a média de uma lista de números.
+
+    Parâmetros:
+    lista_numeros (list): Uma lista de números (int ou float).
+
+    Retorna:
+    float: A média dos números na lista. Retorna 0 se a lista estiver vazia.
+    """
+    if not lista_numeros:
+        return 0
+    return sum(lista_numeros) / len(lista_numeros)
+
+# Acessando a docstring
+print(calcular_media.__doc__)
+
+media = calcular_media([10, 20, 30, 40])
+print(f"\nMédia calculada: {media}")
+        </code></pre>
+
+        <div class="note">
+            <h3>Funções Lambda (Anônimas)</h3>
+            <p>Python também suporta funções pequenas e anônimas chamadas funções lambda. Elas são definidas com a palavra-chave <code>lambda</code> e são restritas a uma única expressão.</p>
+            <p><strong>Sintaxe:</strong> <code>lambda argumentos: expressao</code></p>
+            <pre><code>
+# Função lambda que dobra um número
+dobrar = lambda x: x * 2
+print(f"O dobro de 7 é: {dobrar(7)}") # Saída: O dobro de 7 é: 14
+
+# Função lambda que soma dois números
+adicionar = lambda a, b: a + b
+print(f"A soma de 3 e 4 é: {adicionar(3, 4)}") # Saída: A soma de 3 e 4 é: 7
+            </code></pre>
+            <p>Funções lambda são frequentemente usadas quando uma função pequena é necessária por um curto período, como argumento para outra função (por exemplo, em <code>sorted()</code>, <code>map()</code>, <code>filter()</code>).</p>
+        </div>
+
+        <hr>
+        <p>Dominar funções é crucial para escrever código Python eficiente e bem estruturado. Elas são a base para criar programas mais complexos e modulares! 😊</p>
+    </div>
+
+{% endblock %}

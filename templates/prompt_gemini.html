@@ -1,0 +1,51 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<div class="gemini" xmlns="http://www.w3.org/1999/html">
+  <h1>Pergunte ao Gemini</h1>
+  <hr>
+  </br/>
+  <label class="gemini" for="userPrompt">Digite seu prompt:</label></br>
+  <textarea class="gemini" id="userPrompt" rows="4" cols="100" ></textarea></br>
+  <button class="gemini" onclick="enviarPrompt()">Enviar para Gemini</button>
+</div>
+<div class="geminiresposta" id="geminiResponse">
+  <textarea class="geminiresposta" rows="14" cols="100" >
+    A resposta do Gemini aparecerá aqui...
+  </textarea></br>
+</div>
+
+<script>
+  async function enviarPrompt() {
+    const promptTexto = document.getElementById('userPrompt').value;
+    const areaResposta = document.getElementById('geminiResponse');
+    areaResposta.innerHTML = '<textarea class="geniniresposta" rows="14" cols="100">Processando...</textarea>';
+
+    try {
+      // Fazer uma requisição para o SEU backend
+      const response = await fetch('/generate', { // '/api/gemini-proxy' é um exemplo de endpoint no seu backend
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: promptTexto }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `Erro HTTP: ${response.status}`);
+      }
+
+      const data = await response.json();
+      areaResposta.innerHTML = `<textarea class="geniniresposta" rows="14" cols="100">${data.text}</textarea>`; // Supondo que seu backend retorne { text: "resposta do gemini" }
+
+    } catch (error) {
+      console.error('Erro ao chamar o backend:', error);
+      areaResposta.innerHTML = `<textarea>Erro ao processar o prompt: ${error.message}</textarea>`;
+    }
+  }
+</script>
+
+
+
+{% endblock %}

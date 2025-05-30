@@ -1,0 +1,92 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+        <h1>Estruturas de Seleção em Python 🐍</h1>
+        </br>
+        <p>
+           As estruturas de seleção em Python permitem que o seu código tome decisões e execute blocos de código
+           diferentes com base em certas condições. As principais são if, elif (senão se) e else (senão). Também
+           conhecidas como estruturas condicionais, permitem que um programa execute diferentes blocos de código
+           com base em certas condições serem verdadeiras ou falsas.
+        </p>
+
+        <hr>
+
+        <h2>1. <code>if</code> (Se)</h2>
+        <p>A estrutura <code>if</code> é a mais básica. O bloco de código dentro do <code>if</code> só é executado se a condição especificada for verdadeira.</p>
+        <p><strong>Sintaxe:</strong></p>
+        <pre><code>
+if condicao:
+    # Bloco de código a ser executado se a condição for verdadeira
+        </code></pre>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code>
+idade = 20
+
+if idade >= 18:
+    print("Você é maior de idade.")
+        </code></pre>
+        <p>Neste exemplo, como <code>idade</code> (20) é maior ou igual a 18, a mensagem "Você é maior de idade." será impressa.</p>
+
+        <hr>
+
+        <h2>2. <code>if-else</code> (Se-Senão)</h2>
+        <p>A estrutura <code>if-else</code> permite que você execute um bloco de código se a condição for verdadeira e outro bloco de código se a condição for falsa.</p>
+        <p><strong>Sintaxe:</strong></p>
+        <pre><code>
+if condicao:
+    # Bloco de código a ser executado se a condição for verdadeira
+else:
+    # Bloco de código a ser executado se a condição for falsa
+        </code></pre>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code>
+temperatura = 15
+
+if temperatura > 25:
+    print("Está calor!")
+else:
+    print("Não está calor.")
+        </code></pre>
+        <p>Aqui, como <code>temperatura</code> (15) não é maior que 25, o código dentro do bloco <code>else</code> será executado, imprimindo "Não está calor.".</p>
+
+        <hr>
+
+        <h2>3. <code>if-elif-else</code> (Se-Senão se-Senão)</h2>
+        <p>A estrutura <code>if-elif-else</code> é usada quando você tem múltiplas condições para verificar. O Python verifica as condições na ordem em que aparecem. Assim que uma condição verdadeira é encontrada, o bloco de código correspondente é executado e o restante da estrutura é ignorado. O bloco <code>else</code> ao final é opcional e será executado se nenhuma das condições anteriores (<code>if</code> ou <code>elif</code>) for verdadeira.</p>
+        <p><strong>Sintaxe:</strong></p>
+        <pre><code>
+if condicao1:
+    # Bloco de código a ser executado se a condicao1 for verdadeira
+elif condicao2:
+    # Bloco de código a ser executado se a condicao1 for falsa e a condicao2 for verdadeira
+elif condicao3:
+    # Bloco de código a ser executado se as condicoes1 e condicao2 forem falsas e a condicao3 for verdadeira
+else:
+    # Bloco de código a ser executado se todas as condições anteriores forem falsas
+        </code></pre>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code>
+nota = 75
+
+if nota >= 90:
+    print("Conceito A")
+elif nota >= 80:
+    print("Conceito B")
+elif nota >= 70:
+    print("Conceito C")
+elif nota >= 60:
+    print("Conceito D")
+else:
+    print("Conceito F (Reprovado)")
+        </code></pre>
+        <p>Neste caso, como <code>nota</code> (75) não é maior ou igual a 90, nem maior ou igual a 80, mas é maior ou igual a 70, a mensagem "Conceito C" será impressa. As condições subsequentes e o bloco <code>else</code> são ignorados.</p>
+
+        <hr>
+
+        <p>Espero que isto ajude a entender as estruturas de seleção em Python! 😊</p>
+</>
+
+{% endblock %}

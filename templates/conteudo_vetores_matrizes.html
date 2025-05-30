@@ -1,0 +1,244 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+        <h1>Vetores e Matrizes em Python 📊</h1>
+
+        </br>
+
+        <p>
+            Em Python, embora não tenhamos "vetores" e "matrizes" como tipos de dados primitivos com o mesmo nome que em
+            algumas outras linguagens (como C++ ou Java com arrays), usamos as listas do Python para representar essas
+            estruturas de forma muito eficaz. Para operações matemáticas mais avançadas e otimizadas, a biblioteca NumPy é
+            amplamente utilizada, mas vamos focar em como fazer isso com as estruturas básicas do Python.
+        </p>
+
+        </br>
+
+        <p>As estruturas de dados mais comuns para representar vetores (sequências unidimensionais) e matrizes
+            (arranjos bidimensionais) são as <strong>listas</strong>. Para funcionalidades mais avançadas e performance em
+            computação numérica, a biblioteca <strong>NumPy</strong> é a padrão, mas aqui veremos como usar listas nativas
+            do Python.
+        </p>
+
+        <hr>
+
+        <h2>1. Vetores (Usando Listas Unidimensionais)</h2>
+        <p>Um vetor pode ser pensado como uma lista de elementos. Cada elemento possui um índice que indica sua posição.</p>
+
+        <h3>Criando um Vetor (Lista):</h3>
+        <pre><code>
+# Um vetor de números inteiros
+vetor_numeros = [10, 20, 30, 40, 50]
+print(f"Vetor de números: {vetor_numeros}")
+
+# Um vetor de strings
+vetor_nomes = ["Ana", "Bruno", "Carlos"]
+print(f"Vetor de nomes: {vetor_nomes}")
+
+# Um vetor vazio
+vetor_vazio = []
+print(f"Vetor vazio: {vetor_vazio}")
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Vetor de números: [10, 20, 30, 40, 50]
+Vetor de nomes: ['Ana', 'Bruno', 'Carlos']
+Vetor vazio: []
+        </code></pre>
+
+        <h3>Acessando Elementos de um Vetor:</h3>
+        <p>Os elementos são acessados por seus índices, começando em 0.</p>
+        <pre><code>
+vetor = [10, 20, 30, 40, 50]
+
+primeiro_elemento = vetor[0]  # Acessa o elemento no índice 0
+segundo_elemento = vetor[1]   # Acessa o elemento no índice 1
+ultimo_elemento = vetor[-1]   # Acessa o último elemento
+
+print(f"Primeiro elemento: {primeiro_elemento}") # Saída: 10
+print(f"Segundo elemento: {segundo_elemento}")   # Saída: 20
+print(f"Último elemento: {ultimo_elemento}")     # Saída: 50
+        </code></pre>
+
+        <h3>Modificando Elementos de um Vetor:</h3>
+        <pre><code>
+vetor = [1, 2, 3, 4, 5]
+print(f"Vetor original: {vetor}")
+
+vetor[2] = 300 # Modifica o elemento no índice 2
+print(f"Vetor modificado: {vetor}")
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Vetor original: [1, 2, 3, 4, 5]
+Vetor modificado: [1, 2, 300, 4, 5]
+        </code></pre>
+
+        <h3>Tamanho de um Vetor:</h3>
+        <p>Use a função <code>len()</code> para obter o número de elementos.</p>
+        <pre><code>
+vetor = ["a", "b", "c", "d"]
+tamanho = len(vetor)
+print(f"O tamanho do vetor é: {tamanho}") # Saída: 4
+        </code></pre>
+
+        <h3>Iterando sobre um Vetor:</h3>
+        <pre><code>
+vetor = [10, 20, 30]
+print("Elementos do vetor:")
+for elemento in vetor:
+    print(elemento)
+
+print("\nElementos com seus índices:")
+for i in range(len(vetor)):
+    print(f"Índice {i}: {vetor[i]}")
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Elementos do vetor:
+10
+20
+30
+
+Elementos com seus índices:
+Índice 0: 10
+Índice 1: 20
+Índice 2: 30
+        </code></pre>
+
+        <hr>
+
+        <h2>2. Matrizes (Usando Listas de Listas - Bidimensionais)</h2>
+        <p>Uma matriz pode ser representada como uma lista onde cada elemento é, por si só, outra lista (representando uma linha da matriz).</p>
+
+        <h3>Criando uma Matriz (Lista de Listas):</h3>
+        <pre><code>
+# Matriz 3x3 (3 linhas, 3 colunas)
+matriz = [
+    [1, 2, 3],  # Linha 0
+    [4, 5, 6],  # Linha 1
+    [7, 8, 9]   # Linha 2
+]
+print("Matriz:")
+for linha in matriz:
+    print(linha)
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Matriz:
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+        </code></pre>
+
+        <h3>Acessando Elementos de uma Matriz:</h3>
+        <p>Você precisa de dois índices: o primeiro para a linha e o segundo para a coluna (elemento dentro da lista da linha).</p>
+        <pre><code>
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# Acessar o elemento na linha 0, coluna 1 (valor 2)
+elemento_0_1 = matriz[0][1]
+print(f"Elemento na linha 0, coluna 1: {elemento_0_1}") # Saída: 2
+
+# Acessar o elemento na linha 2, coluna 0 (valor 7)
+elemento_2_0 = matriz[2][0]
+print(f"Elemento na linha 2, coluna 0: {elemento_2_0}") # Saída: 7
+        </code></pre>
+
+        <h3>Modificando Elementos de uma Matriz:</h3>
+        <pre><code>
+matriz = [[1, 2], [3, 4]]
+print("Matriz original:")
+for linha in matriz:
+    print(linha)
+
+matriz[0][1] = 20 # Modifica elemento na linha 0, coluna 1
+matriz[1][0] = 30 # Modifica elemento na linha 1, coluna 0
+print("\nMatriz modificada:")
+for linha in matriz:
+    print(linha)
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Matriz original:
+[1, 2]
+[3, 4]
+
+Matriz modificada:
+[1, 20]
+[30, 4]
+        </code></pre>
+
+        <h3>Dimensões de uma Matriz:</h3>
+        <pre><code>
+matriz = [[1, 2, 3, 4], [5, 6, 7, 8]]
+
+numero_linhas = len(matriz)
+if numero_linhas > 0:
+    numero_colunas = len(matriz[0]) # Assume que todas as linhas têm o mesmo número de colunas
+else:
+    numero_colunas = 0
+
+print(f"Número de linhas: {numero_linhas}")       # Saída: 2
+print(f"Número de colunas: {numero_colunas}")   # Saída: 4
+        </code></pre>
+
+        <h3>Iterando sobre uma Matriz:</h3>
+        <p>Normalmente se usa laços aninhados (um <code>for</code> dentro de outro).</p>
+        <pre><code>
+matriz = [[10, 20], [30, 40], [50, 60]]
+
+print("Iterando sobre os elementos da matriz:")
+for linha in matriz:      # Itera sobre cada lista (linha) na matriz
+    for elemento in linha: # Itera sobre cada elemento na lista (linha) atual
+        print(elemento, end=" ") # Imprime o elemento e um espaço
+    print() # Pula para a próxima linha após imprimir todos os elementos da linha atual
+
+print("\nIterando com índices:")
+for i in range(len(matriz)): # Índice da linha
+    for j in range(len(matriz[i])): # Índice da coluna
+        print(f"Matriz[{i}][{j}] = {matriz[i][j]}")
+        </code></pre>
+        <p><strong>Saída Esperada:</strong></p>
+        <pre><code>
+Iterando sobre os elementos da matriz:
+10 20
+30 40
+50 60
+
+Iterando com índices:
+Matriz[0][0] = 10
+Matriz[0][1] = 20
+Matriz[1][0] = 30
+Matriz[1][1] = 40
+Matriz[2][0] = 50
+Matriz[2][1] = 60
+        </code></pre>
+
+        <div class="note">
+            <h3>Nota sobre NumPy</h3>
+            <p>Embora as listas do Python sejam flexíveis para representar vetores e matrizes, para operações matemáticas complexas (como multiplicação de matrizes, transposição, inversão), cálculos científicos e melhor desempenho com grandes volumes de dados, a biblioteca <strong>NumPy</strong> é a ferramenta padrão em Python. Ela fornece um objeto <code>array</code> otimizado para essas tarefas.</p>
+            <p>Exemplo rápido com NumPy (requer instalação: <code>pip install numpy</code>):</p>
+            <pre><code>
+import numpy as np
+
+# Vetor com NumPy
+vetor_np = np.array([1, 2, 3])
+print(f"Vetor NumPy: {vetor_np}")
+
+# Matriz com NumPy
+matriz_np = np.array([[1, 2], [3, 4]])
+print(f"Matriz NumPy:\n{matriz_np}")
+
+# Operação: Somar 5 a cada elemento do vetor
+print(f"Vetor NumPy + 5: {vetor_np + 5}")
+            </code></pre>
+        </div>
+
+        <hr>
+
+        <p>Usar listas para simular vetores e matrizes é uma ótima maneira de entender os conceitos fundamentais. Conforme suas necessidades se tornarem mais complexas, especialmente na área de análise de dados e ciência, explorar NumPy será um próximo passo natural! 😊</p>
+    </div>
+
+{% endblock %}

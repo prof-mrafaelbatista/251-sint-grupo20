@@ -1,0 +1,125 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Garante que html e body ocupem a altura total da viewport */
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Evita a rolagem global da página */
+}
+
+.gemini label {
+  margin-bottom : 10px;
+}
+
+.gemini textarea {
+  border:1px solid #999999;
+  border-radius : 10px;
+  width:100%;
+  margin : 0px;
+  padding : 5px;
+}
+
+.gemini button {
+  border:1px solid #999999;
+  background-color : #0277BD;
+  border-radius : 5px;
+  width:100%;
+  margin : 5px 5px 0px 0px;
+  padding : 5px;
+}
+
+.geminiresposta textarea {
+  border:1px solid #999999;
+  border-radius : 10px;
+  width:100%;
+  margin : 10px 0px 0px 0px;
+  padding : 5px;
+}
+
+.imagem {
+  text-align : center;
+}
+
+.tabela {
+    background-color : #000000;
+    width : 100%;
+}
+
+.page-wrapper {
+    display: flex; /* Transforma o wrapper em um container flexível */
+    flex-direction: column; /* Organiza os itens em coluna (header, main, footer) */
+    height: 100vh; /* Ocupa a altura total da viewport */
+}
+
+.dicionario {
+    width : 100%;
+}
+
+.dicionario tr {
+    border : 2px solid #999999;
+}
+
+.dicionario th {
+    border : 1px solid #999999;
+    background-color : #0277BD;
+    text-align : center;
+    padding : 5px;
+}
+
+.dicionario td {
+  border : 1px solid #999999;
+}
+
+.dicionario button {
+  display: inline-block;
+  border : 1px solid #999999;
+  background-color : #0277BD;
+  color : white;
+  margin : 5px;
+  padding : 5px;
+  white-space: nowrap;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    flex-shrink: 0; /* Impede que o header encolha */
+}
+
+.rodape {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    font-size: 10px;
+    flex-shrink: 0; /* Impede que o footer encolha */
+}
+
+.main-content {
+    flex-grow: 1; /* Faz com que o main-content ocupe todo o espaço disponível */
+    overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo exceder a altura */
+    padding: 1em;
+    background-color: black;
+    display: flex; /* Torna o main-content um container flex para alinhar o fixed-container */
+    justify-content: center; /* Centraliza horizontalmente o fixed-container */
+    align-items: center; /* Centraliza verticalmente o fixed-container */
+}
+
+.fixed-container {
+    background-color: black;
+    padding: 20px;
+/*    max-width: 800px; Largura máxima para o container fixo */
+    width: 100%; /* Ocupa a largura total disponível dentro do main-content */
+    max-height: 100%; /* Impede que o container fixo ultrapasse a altura do main-content */
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura/altura */
+    /* Se você quiser que o conteúdo dentro do fixed-container role, e não o main-content, adicione overflow-y: auto; aqui */
+    /* overflow-y: auto; */
+}
