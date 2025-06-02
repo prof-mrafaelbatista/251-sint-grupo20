@@ -7,7 +7,9 @@ from flask import jsonify
 from google import genai
 
 # Configure com sua Chave de API (idealmente de uma variável de ambiente)
-client = genai.Client(api_key="<digite aqui sua chave>")
+client = genai.Client(api_key="AIzaSyA9ota5IbsEAqJNhdbSKIiEqsYGCUfPWQA")
+
+#client = genai.Client(api_key="<digite aqui sua chave>")
 
 app = Flask(__name__)
 
