@@ -6,12 +6,12 @@
     <form action="{{ url_for('criar_termo') }}" method="post">
       <div class="mb-3">
         <label for="termo" class="form-label">Termo</label>
-        <input class="form-control" id="termo" name="termo" aria-describedby="emailHelp"></label>
+        <input class="form-control" id="termo" name="termo" maxlength="20" aria-describedby="emailHelp"></label>
         <div id="termoHelp" class="form-text">Termo para ser adicionado</div>
       </div>
       <div class="mb-3">
         <label for="descricao" class="form-label">Descrição</label>
-        <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+        <textarea class="form-control" id="descricao" name="descricao" maxlength="1024" rows="3"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
